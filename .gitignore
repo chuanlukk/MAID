@@ -1,0 +1,5 @@
+*.ckpt
+*.pth
+__pycache__
+debug
+core*
