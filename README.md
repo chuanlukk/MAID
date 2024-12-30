@@ -7,12 +7,14 @@ Our experiments are based on the open-source datasets [DiffusionForensics](https
 ## Installation
 
 1. Clone this repository and navigate to the MAID folder:
+
    ```bash
    git clone https://github.com/Zhu-Luyu/MAID.git
    cd MAID
    ```
 
 2. Install the required packages:
+
    ```bash
    conda env create -f environment.yaml -n maid
    conda activate maid
@@ -26,10 +28,10 @@ Our experiments are based on the open-source datasets [DiffusionForensics](https
    - [DeepFloyd IF-I-M-v1.0](https://huggingface.co/DeepFloyd/IF-I-M-v1.0)
    - [LDM](https://huggingface.co/CompVis/ldm-celebahq-256)
 
-
 ## Training & Evaluation
 
 Modify the script parameters as needed to run training and evaluation:
+
    ```bash
    sh train.sh
    sh eval.sh
@@ -76,3 +78,16 @@ We selected the following model classes for the experiment:
 ## Acknowledgments
 
 Our code is based on the frameworks provided by [CNNDetection](https://github.com/PeterWang512/CNNDetection) and [DNF](https://github.com/YichiCS/DNF). We greatly appreciate their contributions and code.
+
+## Citation
+
+If you find this work useful for your research, please cite our paper:
+
+```text
+@inproceedings{zhu2025maid,
+  title={MAID: Model Attribution via Inverse Diffusion},
+  author={Luyu Zhu and Kai Ye and Jiayu Yao and Chenxi Li and Luwen Zhao and Yuxin Cao and Derui Wang and Jie Hao},
+  booktitle={ICASSP 2025 - 2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  year={2025}
+}
+```
