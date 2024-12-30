@@ -3,3 +3,5 @@
 __pycache__
 debug
 core*
+.ipynb_checkpoints
+checkpoints/*

@@ -35,9 +35,3 @@ for v_id, val in enumerate(vals):
     acc, purity, NMI, val_loss, class_report=validate(model, opt)
     rows.append([val, acc, purity, NMI, val_loss])
     print("({}) acc: {}; purity: {}; NMI: {}; val_loss {}".format(val, acc, purity, NMI, val_loss))
-
-# csv_name = os.path.join('./results', f'{model_name}.csv')
-# print(f'csv_name: {csv_name}')
-# with open(csv_name, 'w') as f:
-#     csv_writer = csv.writer(f, delimiter=',')
-#     csv_writer.writerows(rows)

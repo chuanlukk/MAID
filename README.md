@@ -23,11 +23,9 @@ Our experiments are based on the open-source datasets [DiffusionForensics](https
    - [DDIM](https://heibox.uni-heidelberg.de/f/f179d4f21ebc4d43bbfe/?dl=1)
    - The repository for Stable Diffusion v1.5 has been removed, but you can use [Stable Diffusion v1.4](https://huggingface.co/CompVis/stable-diffusion-v1-4) as a substitute.
    - [DiT](https://huggingface.co/facebook/DiT-XL-2-256)
+   - [DeepFloyd IF-I-M-v1.0](https://huggingface.co/DeepFloyd/IF-I-M-v1.0)
+   - [LDM](https://huggingface.co/CompVis/ldm-celebahq-256)
 
-   ```bash
-   export HF_HUB_ENABLE_HF_TRANSFER=1
-   huggingface-cli download --resume-download CompVis/stable-diffusion-v1-4 --local-dir CompVis--stable-diffusion-v1-4
-   ```
 
 ## Training & Evaluation
 
@@ -37,12 +35,43 @@ Modify the script parameters as needed to run training and evaluation:
    sh eval.sh
    ```
 
-Modify the script parameters as needed to run DMA extraction:
+To run DMA extraction:
 
    ```bash
    cd dma
-   sh extract_dma.sh
+   # DDIM
+   python compute_dma.py --diffusion_name "ddim" --diffusion_path path/to/your/ddim/checkpoint_file.ckpt --dataroot path/to/img_dataset --postfix "_ddim" --batch_size 100
+   # IF. The usage of LDM, SD, and DiT is similar
+   python compute_dma.py --diffusion_name "if" --diffusion_path path/to/your/if/model_folder --dataroot path/to/img_dataset --postfix "_if" --batch_size 100
    ```
+
+## Model Classes
+
+We selected the following model classes for the experiment:
+
+1. DiffusionForensics (LSUN bedroom subset)
+
+| Framework        | Classes               |
+|------------------|-----------------------|
+| GAN              | StyleGAN              |
+| Diffusion Model  | ADM, IDDPM, PNDM      |
+| -                | Real                  |
+
+2. Artifact
+
+| Framework        | Classes                                                                                                                                           |
+|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| GAN              | BiqGAN, CIPS, CycleGAN, Denoising Diffusion GAN, Diffusion GAN, Gansformer, GauGAN, Lama, ProGAN, ProjectedGAN, StarGAN, StyleGAN, Taming Transformer, Generative Inpainting |
+| Diffusion Model  | Latent Diffusion, Stable Diffusion, VQ Diffusion, Glide, Palette, Mat                                                                            |
+| -                | Real                                                                                                                                               |
+
+3. GenImage
+
+| Framework        | Classes                           |
+|------------------|-----------------------------------|
+| GAN              | BigGAN                            |
+| Diffusion Model  | ADM, Glide, Midjourney, SDv1.5, VQDM, wukong |
+| -                | Real                              |
 
 ## Acknowledgments
 

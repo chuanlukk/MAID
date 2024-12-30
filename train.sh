@@ -1,4 +1,3 @@
-# base
 NAME="--name exp-name"
 BS="--batch_size 256"
 SPLIT="--train_split train --val_split val"

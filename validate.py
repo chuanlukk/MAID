@@ -40,7 +40,6 @@ def validate(model, opt):
 
     purity = compute_purity(np.array(all_preds), np.array(all_labels))
     nmi = compute_nmi(np.array(all_preds), np.array(all_labels))
-    # print(f'Accuracy: {accuracy:.4f}, Purity: {purity:.4f}, NMI: {nmi:.4f}, Validation Loss: {avg_loss:.4f}')
     
     class_report = classification_report(all_labels, all_preds, target_names=opt.class_names, digits=4, zero_division=0)
     print('val class_report:')
@@ -55,12 +54,12 @@ def compute_purity(pred, labels):
            labels (N) groundtruth labels
     Output: scalar
     """
-    conf = confusion_matrix(labels, pred)
-    purity = 0
-    for i in range(len(conf)):
-        purity += conf[:, i].max()
-    purity /= conf.sum()
-    return purity 
+    cm = confusion_matrix(labels, pred)
+    sum_of_max = 0
+    for j in range(cm.shape[1]):
+        sum_of_max += cm[:, j].max()
+    total = cm.sum()
+    return sum_of_max / total if total > 0 else 0.0
 
 def compute_nmi(pred, labels):
     """
