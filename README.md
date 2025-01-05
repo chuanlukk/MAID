@@ -37,7 +37,7 @@ Modify the script parameters as needed to run training and evaluation:
    sh eval.sh
    ```
 
-To run DMA extraction:
+To run DMA extraction before training or evaluation:
 
    ```bash
    cd dma
